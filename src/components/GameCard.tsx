@@ -1,19 +1,26 @@
+import { Game } from "../hooks/useGame";
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Image,
+  Text,
+  Hide,
+  Heading,
+} from "@chakra-ui/react";
 
-import { Text } from '@chakra-ui/react';
-import useGame from '../hooks/useGame';
-
-
-
-export const GameCard = () => {
-     const {games, error} = useGame();
-  return (
-    <>
-     {error && <Text>{error}</Text>}
-    <ul>
-        {games.map(game => 
-            <li key= {game.id}>{game.name}</li>
-        )}
-    </ul>
-    </>
-  )
+interface Prop {
+  game: Game;
 }
+
+export const GameCard = ({ game }: Prop) => {
+  return (
+    <Card borderRadius="10px" overflow="hidden">
+      <Image src={game.background_image}></Image>
+      <CardBody>
+        <Heading fontSize='4xl'>{game.name}</Heading>
+      </CardBody>
+    </Card>
+  );
+};
