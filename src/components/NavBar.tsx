@@ -4,7 +4,7 @@ import ColorModeSwitch from "./ColorModeSwitch";
 
 export const NavBar = () => {
   return (
-    <HStack padding="20px" justifyContent="space-between">
+    <HStack padding="10px" justifyContent="space-between">
       <Image src={ logo } boxSize='60px' />
       <ColorModeSwitch></ColorModeSwitch>
     </HStack>
