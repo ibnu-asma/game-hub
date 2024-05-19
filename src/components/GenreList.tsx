@@ -8,7 +8,6 @@ import {
   Spinner,
 } from "@chakra-ui/react";
 import useGenres, { Genre } from "../hooks/useGenres";
-import genres from "../data/genres";
 import getCroppedImageUrl from "../services/image-url";
 
 interface Props {

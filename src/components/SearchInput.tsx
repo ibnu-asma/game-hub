@@ -1,7 +1,7 @@
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react"
 import { useRef } from "react"
 import { IoSearch } from "react-icons/io5"
-import { PrunePayload } from "vite/types/hmrPayload.js";
+
 
 interface Props {
   onSearch: (searchText: string) => void;
