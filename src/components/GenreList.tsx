@@ -6,9 +6,10 @@ import getCroppedImageUrl from "../services/image-url";
 
 interface Props {
   onSelectGenre: (genre: Genre) => void;
+  selectedGenre: Genre | null
 }
 
-export const GenreList = ({ onSelectGenre } : Props) => {
+export const GenreList = ({ onSelectGenre, selectedGenre } : Props) => {
   const { data, loading } = useGenres();
   if(loading) return <Spinner></Spinner>
   return (
@@ -21,7 +22,7 @@ export const GenreList = ({ onSelectGenre } : Props) => {
               boxSize="32px"
               borderRadius="10px"
             ></Image>
-            <Button variant="link" onClick={() => onSelectGenre(genre)} fontSize="medium">{genre.name}</Button>
+            <Button fontWeight={selectedGenre?.id === genre.id ? 'bold' : 'normal'} variant="link" onClick={() => onSelectGenre(genre)} fontSize="medium">{genre.name}</Button>
           </HStack>
         </ListItem>
       ))}
