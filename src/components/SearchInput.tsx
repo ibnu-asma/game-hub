@@ -1,12 +1,25 @@
 import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react"
+import { useRef } from "react"
 import { IoSearch } from "react-icons/io5"
+import { PrunePayload } from "vite/types/hmrPayload.js";
+
+interface Props {
+  onSearch: (searchText: string) => void;
+}
 
 
-export const SearchInput = () => {
+export const SearchInput = ({ onSearch } : Props) => {
+  const ref =useRef<HTMLInputElement>(null);
   return (
+    <form onSubmit={(event)=> 
+       { event.preventDefault();
+      if(ref.current) onSearch(ref.current.value)}
+    }>
     <InputGroup>
         <InputLeftElement><IoSearch /></InputLeftElement>
-        <Input placeholder="Search games..." variant="filled" borderRadius={20}></Input>
+        <Input ref= {ref} placeholder="Search games..." variant="filled" borderRadius={20}></Input>
     </InputGroup>
+
+    </form>
   )
 }
