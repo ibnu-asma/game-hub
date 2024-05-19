@@ -20,7 +20,7 @@ interface Props {
 }
 export const PlatformIconList = ({ platforms = [] }: Props) => {
 
-    const iconMap : {[key : string] : IconType} = {
+  const iconMap : {[key : string] : IconType} = {
         android: FaAndroid,
         linux: FaLinux,
         mac: FaApple,
