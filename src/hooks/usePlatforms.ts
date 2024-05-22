@@ -17,7 +17,7 @@ const usePlatform = () => useQuery<FetchResponse<Platform>, Error>({
     queryFn: apiClient.getAll,
 
     staleTime: 24 * 60 * 60 * 1000, // 1h
-    initialData: {results: platforms}
+    initialData: {next: null, results: platforms}
 });  
     
 

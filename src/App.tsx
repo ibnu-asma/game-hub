@@ -10,10 +10,10 @@ import { GameHeading } from "./components/GameHeading";
 import { Platform } from "./hooks/usePlatforms";
 
 export interface GameQuery {
-  genre: Genre | null;
-  platform: Platform | null;
+  genreId?: number;
+  platformId?: number;
   sortOrder: string;
-  searchText: string
+  searchText: string;
 }
 
 function App() {
@@ -26,27 +26,36 @@ function App() {
       }}
     >
       <GridItem area="nav">
-        <NavBar onSearch={(searchText) => setGameQuery({...gameQuery, searchText})}></NavBar>
+        <NavBar
+          onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText })}
+        ></NavBar>
       </GridItem>
       <Show above="lg">
         <GridItem area="aside" paddingX={5} width="200px">
           <GenreList
-            selectedGenre={gameQuery.genre}
-            onSelectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+            selectedGenreId={gameQuery.genreId}
+            onSelectGenre={(genre) =>
+              setGameQuery({ ...gameQuery, genreId: genre.id })
+            }
           ></GenreList>
         </GridItem>
       </Show>
       <GridItem area="main">
-        <Box  paddingLeft={2}>
+        <Box paddingLeft={2}>
           <HStack spacing={5} marginBottom={3}>
-          <GameHeading gameQuery={gameQuery}></GameHeading>
+            <GameHeading gameQuery={gameQuery}></GameHeading>
             <PlatformSelector
-              selectedPlatform={gameQuery.platform}
+              selectedPlatformId={gameQuery.platformId}
               onSelectePlatform={(platform) =>
-                setGameQuery({ ...gameQuery, platform })
+                setGameQuery({ ...gameQuery, platformId: platform.id })
               }
             ></PlatformSelector>
-            <SortSelector sortOrder={gameQuery.sortOrder} onSelectOrder={(sortOrder => setGameQuery({...gameQuery, sortOrder}))}></SortSelector>
+            <SortSelector
+              sortOrder={gameQuery.sortOrder}
+              onSelectOrder={(sortOrder) =>
+                setGameQuery({ ...gameQuery, sortOrder })
+              }
+            ></SortSelector>
           </HStack>
         </Box>
         <GameGrid gameQuery={gameQuery}></GameGrid>
