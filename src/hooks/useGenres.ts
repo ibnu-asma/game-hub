@@ -11,7 +11,6 @@ export interface Genre {
 }
 
 // const useGenres = () => ({data: genres, loading: false, error: null});
-
 // export default useGenres;
 const apiClient = new APIClient<Genre>('genres');
 
@@ -19,10 +18,7 @@ const useGenres = () => useQuery<FetchResponse<Genre>, Error>({
     queryKey: ["genres"],
     queryFn: apiClient.getAll,
     staleTime: 24 * 60 * 60 * 1000, // 24h
-    initialData: {next: null, results: genres}
+    initialData: genres
   });
-
-     
-
 
 export default useGenres;

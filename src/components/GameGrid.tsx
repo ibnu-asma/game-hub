@@ -1,4 +1,4 @@
-import { Box, SimpleGrid, Text } from "@chakra-ui/react";
+import { Box, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import useGame from "../hooks/useGame";
 import { GameCard } from "./GameCard";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -31,7 +31,7 @@ export const GameGrid = ({ gameQuery }: Props) => {
       <InfiniteScroll
         dataLength={fetchedGamesCount} //This is important field to render the next data
         next={fetchNextPage}
-        loader={<h4>Loading...</h4>}
+        loader={<Spinner></Spinner>}
         hasMore={hasNextPage}
         endMessage={
           <p style={{ textAlign: "center" }}>
