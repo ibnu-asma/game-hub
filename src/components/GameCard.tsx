@@ -1,9 +1,11 @@
-import { Game } from "../hooks/useGame";
+import { Game } from "../hooks/useGames";
 import { Card, CardBody, Image, Heading, HStack } from "@chakra-ui/react";
 import { PlatformIconList } from "./PlatformIconList";
 import { CriticScore } from "./CriticScore";
 import getCroppedImageUrl from "../services/image-url";
 import { Imoji } from "./Imoji";
+import { Link } from "react-router-dom";
+import { transform } from "framer-motion";
 
 interface Prop {
   game: Game;
@@ -11,7 +13,14 @@ interface Prop {
 
 export const GameCard = ({ game }: Prop) => {
   return (
-    <Card borderRadius="10px" overflow="hidden">
+    <Card
+      _hover={{
+        transform: "scale(1.03)",
+        transition: "transform .15s ease-in",
+      }}
+      borderRadius="10px"
+      overflow="hidden"
+    >
       <Image src={getCroppedImageUrl(game.background_image)}></Image>
       <CardBody>
         <HStack justifyContent={"space-between"} marginBottom={3}>
@@ -20,7 +29,10 @@ export const GameCard = ({ game }: Prop) => {
           ></PlatformIconList>
           <CriticScore score={game.metacritic}></CriticScore>
         </HStack>
-        <Heading fontSize="3xl">{game.name} <Imoji rating={game.rating_top}></Imoji></Heading>
+        <Heading fontSize="2xl">
+          <Link to={"/games/" + game.slug}>{game.name}</Link>
+          {game.name} <Imoji rating={game.rating_top}></Imoji>
+        </Heading>
       </CardBody>
     </Card>
   );

@@ -1,11 +1,11 @@
 import { Box, SimpleGrid, Spinner, Text } from "@chakra-ui/react";
 import InfiniteScroll from "react-infinite-scroll-component";
-import useGame from "../hooks/useGame";
+import useGames from "../hooks/useGames";
 import { GameCard } from "./GameCard";
 import React from "react";
 
 export const GameGrid = () => {
-  const { data, error, fetchNextPage, hasNextPage } = useGame();
+  const { data, error, fetchNextPage, hasNextPage } = useGames();
   // const skeletons = [1, 2, 3, 4, 5, 6];
 
   const fetchedGamesCount =
