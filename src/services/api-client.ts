@@ -16,7 +16,6 @@ class APIClient<T> {
   endpoint: string;
   constructor(endpoint: string) {
     this.endpoint = endpoint;
-    console.log(endpoint);
   }
 
   getAll = (config: AxiosRequestConfig) => {
