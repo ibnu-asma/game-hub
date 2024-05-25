@@ -2,7 +2,7 @@ import { Input, InputGroup, InputLeftElement } from "@chakra-ui/react";
 import { useRef } from "react";
 import { IoSearch } from "react-icons/io5";
 import useGameQueryStore from "../stores/gameQueryStore";
-import { redirect, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export const SearchInput = () => {
   const ref = useRef<HTMLInputElement>(null);

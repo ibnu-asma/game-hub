@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import genres from "../data/genres";
 import APIClient, { FetchResponse } from "../services/api-client";
 import ms from "ms";
-import { Genre } from "../entities/Genre";
+import Genre from "../entities/Genre";
 
 // const useGenres = () => ({data: genres, loading: false, error: null});
 // export default useGenres;
